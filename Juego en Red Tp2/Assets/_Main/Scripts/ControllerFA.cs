@@ -6,11 +6,19 @@ using Photon.Pun;
 
 public class ControllerFA : MonoBehaviour
 {
+    private void Awake()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Destroy(Camera.main.gameObject);
+            Destroy(this);
+        }
+    }
     private void Start()
     {
         //Request Para Instanciar a mi Player
         MasterManager.Instance.RPCMaster("RequestConnectPlayer", PhotonNetwork.LocalPlayer);
-
+        PhotonNetwork.Instantiate("VoiceObject", Vector3.zero, Quaternion.identity);
     }
 
     private void Update()

@@ -15,15 +15,15 @@ MonoBehaviour:
   AppSettings:
     AppIdRealtime: 3c199da0-c3c4-457c-96bc-bcec82cf450d
     AppIdFusion: 
-    AppIdChat: 
-    AppIdVoice: 
+    AppIdChat: 6d9cc18b-7726-4a32-b76d-e0c66be1d671
+    AppIdVoice: aa66230c-b1c5-40cb-bc03-b027d60e873a
     AppVersion: 
     UseNameServer: 1
     FixedRegion: 
     Server: 
     Port: 0
     ProxyServer: 
-    Protocol: 1
+    Protocol: 0
     EnableProtocolFallback: 1
     AuthMode: 0
     EnableLobbyStatistics: 0
@@ -34,24 +34,16 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - CantHearYou
+  - ChangeColour
   - ClickRpc
   - DestroyRpc
+  - HeresWhy
   - DestroySpaceship
   - Fire
-  - RespawnSpaceship
-  - RequestDrawRope
-  - RequestDisableLineRenderer
-  - RequestEnableLineRenderer
-  - RequestDisableLine
-  - RequestEnableLine
-  - RequestDamage
-  - UpdateList
-  - Damage
-  - WinPlayer
-  - UpdatePlayerQuantity
-  - StartGame
   - RequestConnectPlayer
   - RequestMove
+  - RespawnSpaceship
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
