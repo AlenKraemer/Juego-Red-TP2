@@ -4,8 +4,8 @@ ScriptsOnlyBuild:
     - CharacterModel
     - ControllerFA
     - MasterManager
-    - MyChat
     - NetManager
+    - PhotonChat
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -122,13 +122,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4920}
     - Class: 114
-      Script: {instanceID: 4990}
-    - Class: 114
       Script: {instanceID: 5164}
     - Class: 114
       Script: {instanceID: 5280}
     - Class: 114
       Script: {instanceID: 5480}
+    - Class: 114
+      Script: {instanceID: 35300}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1923,6 +1923,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit.Forms
     className: UserIdUiForm
+  - hash:
+      serializedVersion: 2
+      Hash: 0ccb911ffe9a3f679b0c611c5e07dd25
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PhotonChat
   platform: 19
   scenePathNames:
   - Assets/_Main/Scenes/Menu.unity

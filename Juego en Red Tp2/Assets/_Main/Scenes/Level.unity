@@ -189,8 +189,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 21.5
+  m_fontSizeBase: 21.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
-  m_VerticalFit: 0
+  m_VerticalFit: 2
 --- !u!222 &35274614
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 300}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &81426829
 GameObject:
@@ -1340,7 +1340,6 @@ GameObject:
   - component: {fileID: 1653065964}
   - component: {fileID: 1653065963}
   - component: {fileID: 1653065962}
-  - component: {fileID: 1653065961}
   - component: {fileID: 1653065960}
   m_Layer: 5
   m_Name: Chat
@@ -1381,33 +1380,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1653065958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52bad3d78b5b2314b8e7a5ed467e3909, type: 3}
+  m_Script: {fileID: 11500000, guid: 07822d26e854f804e9a8edbd5a398190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 35274612}
   inputField: {fileID: 2061589252}
---- !u!114 &1653065961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653065958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
-  sceneViewId: 2
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &1653065962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1558,8 +1535,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1562173382}
   m_HandleRect: {fileID: 1562173381}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.61
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1881,7 +1858,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1653065960}
-        m_TargetAssemblyTypeName: MyChat, Assembly-CSharp
+        m_TargetAssemblyTypeName: PhotonChat, Assembly-CSharp
         m_MethodName: ChatSendMessage
         m_Mode: 1
         m_Arguments:
