@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 3c199da0-c3c4-457c-96bc-bcec82cf450d
+    AppIdRealtime: 7ec535f8-d84b-4172-b8b6-c82a9ab60985
     AppIdFusion: 
-    AppIdChat: 6d9cc18b-7726-4a32-b76d-e0c66be1d671
-    AppIdVoice: aa66230c-b1c5-40cb-bc03-b027d60e873a
+    AppIdChat: 92ce52bb-00cb-4d2d-852c-668979417fa9
+    AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
     FixedRegion: 
     Server: 
     Port: 0
     ProxyServer: 
-    Protocol: 0
+    Protocol: 1
     EnableProtocolFallback: 1
     AuthMode: 0
     EnableLobbyStatistics: 0
@@ -34,16 +34,15 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
-  - CantHearYou
-  - ChangeColour
   - ClickRpc
   - DestroyRpc
-  - HeresWhy
   - DestroySpaceship
   - Fire
+  - RespawnSpaceship
   - RequestConnectPlayer
   - RequestMove
-  - RespawnSpaceship
+  - GetMessage
+  - GetChatMessage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
