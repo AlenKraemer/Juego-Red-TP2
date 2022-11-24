@@ -32,7 +32,7 @@ public class MasterManager : MonoBehaviourPun
     [PunRPC]
     public void RequestConnectPlayer(Player client)
     {
-        GameObject obj = PhotonNetwork.Instantiate("Character", Vector3.zero, Quaternion.identity);
+        GameObject obj = PhotonNetwork.Instantiate("Character", Vector3.zero,Quaternion.Euler(0,0,-90));
         var character = obj.GetComponent<CharacterModel>();
         dicChars[client] = character;
     }
