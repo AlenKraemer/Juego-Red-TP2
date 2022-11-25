@@ -38,6 +38,7 @@ public class ControllerFA : MonoBehaviour
 
         Vector3 dir = new Vector3(h, 0, 0);
 
+        //le pido al master que me mueva al personaje
         if(dir != Vector3.zero)
         {
             MasterManager.Instance.RPCMaster("RequestMove", PhotonNetwork.LocalPlayer, dir);

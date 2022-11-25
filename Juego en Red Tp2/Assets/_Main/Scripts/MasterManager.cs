@@ -6,6 +6,8 @@ using Photon.Realtime;
 
 public class MasterManager : MonoBehaviourPun
 {
+    [SerializeField] private Transform[] posPlayers;
+    private int counter = 0;
     private static MasterManager instance;
     Dictionary<Player, CharacterModel> dicChars = new Dictionary<Player, CharacterModel>();
     public static MasterManager Instance
@@ -32,9 +34,10 @@ public class MasterManager : MonoBehaviourPun
     [PunRPC]
     public void RequestConnectPlayer(Player client)
     {
-        GameObject obj = PhotonNetwork.Instantiate("Character", Vector3.zero,Quaternion.Euler(0,0,-90));
+        GameObject obj = PhotonNetwork.Instantiate("Character", posPlayers[counter].position,posPlayers[counter].rotation);
         var character = obj.GetComponent<CharacterModel>();
         dicChars[client] = character;
+        counter++;
     }
 
     //Movimiento del Personaje

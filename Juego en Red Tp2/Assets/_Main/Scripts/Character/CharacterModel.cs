@@ -15,12 +15,11 @@ public class CharacterModel : MonoBehaviourPun
         playerCamera = Camera.main;
         
     }
-  
-
 
     public void Move(Vector3 dir)
     {
-        transform.position += (transform.right * dir.x) * speed * Time.deltaTime;
-        
+        rb.velocity = (transform.right * dir.x) * speed * Time.deltaTime;
     }
+
+   
 }
