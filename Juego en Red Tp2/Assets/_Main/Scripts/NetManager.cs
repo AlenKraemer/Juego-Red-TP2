@@ -99,14 +99,15 @@ public class NetManager : MonoBehaviourPunCallbacks
     }
     public void OnHost()
     {
+        
         if (string.IsNullOrEmpty(roomNameHost.text) || string.IsNullOrWhiteSpace(roomNameHost.text)) return;
         if (string.IsNullOrEmpty(nicknameHost.text) || string.IsNullOrWhiteSpace(nicknameHost.text)) return;
         if (string.IsNullOrEmpty(maxPlayers.text) || string.IsNullOrWhiteSpace(maxPlayers.text)) return;
-
         PhotonNetwork.NickName = nicknameHost.text;
 
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = byte.Parse(maxPlayers.text);
+        options.MaxPlayers += 1;
         options.IsOpen = true;
         options.IsVisible = true;
         PhotonNetwork.JoinOrCreateRoom(roomNameHost.text, options, TypedLobby.Default);

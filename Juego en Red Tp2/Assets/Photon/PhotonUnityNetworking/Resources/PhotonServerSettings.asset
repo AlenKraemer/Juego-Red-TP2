@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 7ec535f8-d84b-4172-b8b6-c82a9ab60985
+    AppIdRealtime: 3c199da0-c3c4-457c-96bc-bcec82cf450d
     AppIdFusion: 
-    AppIdChat: 92ce52bb-00cb-4d2d-852c-668979417fa9
+    AppIdChat: 6d9cc18b-7726-4a32-b76d-e0c66be1d671
     AppIdVoice: aa66230c-b1c5-40cb-bc03-b027d60e873a
     AppVersion: 
     UseNameServer: 1
@@ -46,6 +46,18 @@ MonoBehaviour:
   - CantHearYou
   - ChangeColour
   - HeresWhy
+  - RequestShowChat
+  - RequestStop
+  - DeactivateWalls
+  - DeactivateWall
+  - ActivateWall
+  - ActivateWalls
+  - RPC_ActivateWall
+  - RPC_FreezeRigidBody
+  - FreezeRigidBody
+  - TimerStart
+  - InstantiateBall
+  - UpdateText
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
