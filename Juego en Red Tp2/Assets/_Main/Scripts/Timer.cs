@@ -1,30 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using Photon.Realtime;
+using System;
 
 public class Timer : MonoBehaviourPun
 {
-    float currentTime;
-    public float startingTime = 30f;
 
-    [SerializeField] TextMeshProUGUI countdownTimer;
-     void Start()
+    [SerializeField] private TextMeshProUGUI timerText;
+
+
+    public void RPC_TimerStart(int secondsToWait)
     {
-        countdownTimer.text = startingTime.ToString();
-        currentTime = startingTime;
-     }
+        photonView.RPC(nameof(TimerStart), RpcTarget.All, secondsToWait);
 
-     void Update()
+    }
+
+    [PunRPC]
+    public void TimerStart(int secondsToWait)
     {
-        startingTime -= Time.deltaTime;
-        countdownTimer.text = Mathf.Round(startingTime).ToString();
+        StartCoroutine(WaitToStart(secondsToWait));
+    }
 
-        if(startingTime < 0)
+
+    IEnumerator WaitToStart(int secondsToWait)
+    {
+        for (int i = secondsToWait; i > 0; i--)
         {
-            startingTime = 0;
+            timerText.text = i.ToString();
+            yield return new WaitForSeconds(1f);
+        }
+        timerText.text = null;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            MasterManager.Instance.RPCMaster("InstantiateBall");
         }
     }
+
+  
 
 }
