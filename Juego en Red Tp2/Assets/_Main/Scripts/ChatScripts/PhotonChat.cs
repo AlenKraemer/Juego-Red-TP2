@@ -6,6 +6,7 @@ using Photon.Pun;
 using ExitGames.Client.Photon;
 using TMPro;
 
+
 public class PhotonChat : MonoBehaviour, IChatClientListener
 {
     public TextMeshProUGUI content;
@@ -91,13 +92,13 @@ public class PhotonChat : MonoBehaviour, IChatClientListener
                 color = "<color=red>";                   
             }
           
-            content.text += color + currSender + ": " + "</color>" + messages[i] + "\n";         
+            content.text += "<color=red>" + currSender + ": " + "</color>" + messages[i] + "\n";         
         }   
     }
 
     public void OnPrivateMessage(string sender, object message, string channelName)
     {                 
-        content.text += "<color=yellow>"+sender + ": " + "</color>" + message + "\n";
+        content.text += "<color=yellow>"+ sender + ": " + "</color>" + message + "\n";
     }
 
     public void OnStatusUpdate(string user, int status, bool gotMessage, object message)

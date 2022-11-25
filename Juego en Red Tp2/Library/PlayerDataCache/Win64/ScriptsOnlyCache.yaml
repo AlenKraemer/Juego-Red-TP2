@@ -15,6 +15,7 @@ ScriptsOnlyBuild:
     - PhotonChat
     - PointersController
     - ProximityVoiceTrigger
+    - Timer
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -25,6 +26,8 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.PunBasics.PlayerUI
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
+    PhotonUnityNetworking.Editor.dll:
+    - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.Utilities.dll:
     - Photon.Pun.UtilityScripts.MoveByKeys
     PhotonUnityNetworking.dll:
@@ -147,6 +150,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 6440}
     - Class: 114
       Script: {instanceID: 6620}
+    - Class: 114
+      Script: {instanceID: 74166}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -2271,6 +2276,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit.Forms
     className: UserIdUiForm
+  - hash:
+      serializedVersion: 2
+      Hash: 6f95e3504814995fb8647455853b81eb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Timer
   platform: 19
   scenePathNames:
   - Assets/_Main/Scenes/Menu.unity
