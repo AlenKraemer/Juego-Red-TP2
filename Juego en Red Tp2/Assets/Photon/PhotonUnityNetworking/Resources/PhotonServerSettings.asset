@@ -55,6 +55,9 @@ MonoBehaviour:
   - RPC_ActivateWall
   - RPC_FreezeRigidBody
   - FreezeRigidBody
+  - TimerStart
+  - InstantiateBall
+  - UpdateText
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

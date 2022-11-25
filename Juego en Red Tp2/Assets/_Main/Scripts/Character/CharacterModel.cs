@@ -27,7 +27,7 @@ public class CharacterModel : MonoBehaviourPun
     
     public void RPC_FreezeRigidBody(bool option)
     {
-        photonView.RPC(nameof(FreezeRigidBody), RpcTarget.All, option);
+        photonView.RPC(nameof(FreezeRigidBody), RpcTarget.AllBuffered, option);
     }
 
     [PunRPC]
