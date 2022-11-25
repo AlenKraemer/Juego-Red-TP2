@@ -92,7 +92,7 @@ public class PhotonChat : MonoBehaviour, IChatClientListener
                 color = "<color=red>";                   
             }
           
-            content.text += "<color=red>" + currSender + ": " + "</color>" + messages[i] + "\n";         
+            content.text += color + currSender + ": " + "</color>" + messages[i] + "\n";         
         }   
     }
 

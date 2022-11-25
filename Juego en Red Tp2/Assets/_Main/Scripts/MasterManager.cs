@@ -13,9 +13,12 @@ public class MasterManager : MonoBehaviourPun
     [SerializeField] private Timer timer;
     [SerializeField] private int timeToStart = 5;
     private List<GameObject> playersToKill = new List<GameObject>();
-    private List<GameObject> players = new List<GameObject>();
+    private GameObject[] winnerPlayer = new GameObject[1];
+
     private int counter = 0;
     private static MasterManager instance;
+
+    Dictionary<int, GameObject> dicplayersToKill = new Dictionary<int, GameObject>();
     Dictionary<Player, CharacterModel> dicChars = new Dictionary<Player, CharacterModel>();
     Dictionary<GameObject, PlayerScore> dicVictory = new Dictionary<GameObject, PlayerScore>();
     public static MasterManager Instance
@@ -45,8 +48,7 @@ public class MasterManager : MonoBehaviourPun
 
         GameObject obj = PhotonNetwork.Instantiate("Character", posPlayers[counter].position,posPlayers[counter].rotation);
         var character = obj.GetComponent<CharacterModel>();
-        playersToKill.Add(obj);
-        players.Add(obj);
+        dicplayersToKill[counter] = obj;
         dicChars[client] = character;
         dicVictory[obj] = playerScore[counter];
         playerScore[counter].RPC_SetInitialScore();
@@ -93,13 +95,15 @@ public class MasterManager : MonoBehaviourPun
     [PunRPC]
     public void KillPlayer(int playerID)
     {
-        PhotonNetwork.Destroy(playersToKill[playerID]);
-        playersToKill.RemoveAt(playerID);
+        PhotonNetwork.Destroy(dicplayersToKill[playerID]);
+        dicplayersToKill.Remove(playerID);
         ActivateWalls(playerID);
 
-        if(playersToKill.Count == 1)
+        if(dicplayersToKill.Count == 1)
         {
-            var winner = dicVictory[playersToKill[0]];
+            dicplayersToKill.Values.CopyTo(winnerPlayer, 0);
+
+            var winner = dicVictory[winnerPlayer[0]];
             winner.RPC_Victory();
         }
     }
