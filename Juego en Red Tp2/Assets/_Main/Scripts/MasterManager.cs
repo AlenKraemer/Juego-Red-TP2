@@ -8,9 +8,11 @@ using System;
 public class MasterManager : MonoBehaviourPun
 {
     [SerializeField] private Transform[] posPlayers;
+    [SerializeField] private PlayerScore[] playerScore;
     [SerializeField] private WallManager playersWalls;
     [SerializeField] private Timer timer;
     [SerializeField] private int timeToStart = 5;
+    private GameObject[] players = new GameObject[4];
     private int counter = 0;
     private static MasterManager instance;
     Dictionary<Player, CharacterModel> dicChars = new Dictionary<Player, CharacterModel>();
@@ -41,7 +43,9 @@ public class MasterManager : MonoBehaviourPun
 
         GameObject obj = PhotonNetwork.Instantiate("Character", posPlayers[counter].position,posPlayers[counter].rotation);
         var character = obj.GetComponent<CharacterModel>();
+        players[counter] = obj;
         dicChars[client] = character;
+        playerScore[counter].RPC_SetInitialScore();
         if(counter == 0 || counter == 1)
         {
             character.RPC_FreezeRigidBody(true);
@@ -74,6 +78,7 @@ public class MasterManager : MonoBehaviourPun
         }
 
         timer.RPC_TimerStart(timeToStart);
+        PhotonNetwork.Instantiate("Ball Instantiator", Vector3.zero, Quaternion.identity);
     }
 
     public void ActivateWalls(int index)
@@ -82,9 +87,23 @@ public class MasterManager : MonoBehaviourPun
     }
 
     [PunRPC]
+    public void KillPlayer(int playerID)
+    {
+        PhotonNetwork.Destroy(players[playerID]);
+        ActivateWalls(playerID);
+    }
+
+    [PunRPC]
     public void InstantiateBall()
     {
         PhotonNetwork.Instantiate("Ball", Vector3.zero, Quaternion.identity);
+        
+    }
+
+    [PunRPC]
+    public void DeleteBall(PhotonView ID)
+    {
+        PhotonNetwork.Destroy(ID);
     }
 
     //Movimiento del Personaje

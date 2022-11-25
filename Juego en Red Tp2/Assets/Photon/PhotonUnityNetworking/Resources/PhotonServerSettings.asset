@@ -58,6 +58,11 @@ MonoBehaviour:
   - TimerStart
   - InstantiateBall
   - UpdateText
+  - SetInitialScore
+  - UpdateScore
+  - DeleteScore
+  - DeleteBall
+  - KillPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

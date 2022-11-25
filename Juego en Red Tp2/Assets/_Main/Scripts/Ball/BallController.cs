@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class BallController : MonoBehaviour
+public class BallController : MonoBehaviourPun
 {
     [SerializeField] private float speed = 5f;
     private Vector2[] initialLaunch = { new Vector2(0, 1), new Vector2(0, -1), new Vector2(1, 0), new Vector2(-1, 0) };
@@ -23,5 +24,17 @@ public class BallController : MonoBehaviour
     {
         int index = Random.Range(0, 4);
         rb.velocity = initialLaunch[index] * speed;
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            var obj = collision.GetComponent<PlayerScore>();
+            obj.RPC_UpdateScore();
+
+            MasterManager.Instance.RPCMaster("DeleteBall",photonView);
+        }
     }
 }
