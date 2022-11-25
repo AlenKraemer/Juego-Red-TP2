@@ -48,6 +48,13 @@ MonoBehaviour:
   - HeresWhy
   - RequestShowChat
   - RequestStop
+  - DeactivateWalls
+  - DeactivateWall
+  - ActivateWall
+  - ActivateWalls
+  - RPC_ActivateWall
+  - RPC_FreezeRigidBody
+  - FreezeRigidBody
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -95,7 +95,8 @@ public class NetManager : MonoBehaviourPunCallbacks
         PhotonNetwork.NickName = nicknameHost.text;
 
         RoomOptions options = new RoomOptions();
-        options.MaxPlayers = byte.Parse(maxPlayers.text + 1);
+        options.MaxPlayers = byte.Parse(maxPlayers.text);
+        options.MaxPlayers += 1;
         options.IsOpen = true;
         options.IsVisible = true;
         PhotonNetwork.JoinOrCreateRoom(roomNameHost.text, options, TypedLobby.Default);
