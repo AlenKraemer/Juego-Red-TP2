@@ -5,8 +5,10 @@ using Photon.Pun;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 public class NetManager : MonoBehaviourPunCallbacks
+
 {
     [SerializeField] private Button hostRoomButton;
     [SerializeField] private Button joinRoomButton;
@@ -22,23 +24,43 @@ public class NetManager : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_InputField roomNameJoin;
     [SerializeField] private string[] randomNickname;
 
+    public GameObject Panel;
+
+
     private void Start()
-    {
-        
+    {       
         PhotonNetwork.ConnectUsingSettings();
         hostRoomButtonActivate.interactable = false;
         joinRoomButtonActivate.interactable = false;
         status.text = "Connecting to Master";
     }
+    public void OpenPanel()
+    {
+        if (Panel != null)
+        {
+            bool isActive = Panel.activeSelf;
 
+            Panel.SetActive(!isActive);
+            Debug.Log("IsOpenedPanel");
+        }
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+        OnJoinedLobby();
+        OnConnectedToMaster();
+    }
+    public void ExitGame()
+    {
+        //Application.Quit();
+        Debug.Log("Exit Game");
+    }
     public override void OnConnectedToMaster()
     {
         hostRoomButtonActivate.interactable = false;
         joinRoomButtonActivate.interactable = false;
         PhotonNetwork.JoinLobby();
         status.text = "Connecting to Lobby";
-
-
     }
 
     public override void OnJoinedLobby()
@@ -46,46 +68,35 @@ public class NetManager : MonoBehaviourPunCallbacks
         hostRoomButtonActivate.interactable = true;
         joinRoomButtonActivate.interactable = true;
         status.text = "Connected to Lobby";
-
-
     }
-
     public override void OnDisconnected(DisconnectCause cause)
     {
         status.text = "Conection Failed";
-
     }
-
     public override void OnLeftLobby()
     {
         status.text = "Conection to Lobby Failed";
-
     }
 
     public override void OnCreatedRoom()
     {
         status.text = "Room Created";
     }
-
     public override void OnJoinedRoom()
     {
         status.text = "Joined Room";
         PhotonNetwork.LoadLevel("Level");
     }
-
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         status.text = "Cannot Join Room";
         joinRoomButton.interactable = true;
     }
-
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         status.text = "Cannot Create Room";
         hostRoomButton.interactable = true;
     }
-
-
     public void OnHost()
     {
         if (string.IsNullOrEmpty(roomNameHost.text) || string.IsNullOrWhiteSpace(roomNameHost.text)) return;
@@ -100,7 +111,6 @@ public class NetManager : MonoBehaviourPunCallbacks
         options.IsVisible = true;
         PhotonNetwork.JoinOrCreateRoom(roomNameHost.text, options, TypedLobby.Default);
         hostRoomButton.interactable = false;
-
     } 
     public void OnJoin()
     {
@@ -129,8 +139,6 @@ public class NetManager : MonoBehaviourPunCallbacks
         joinRoom.SetActive(true);
         joinRoomButtonActivate.gameObject.SetActive(false);
         hostRoomButtonActivate.gameObject.SetActive(false);
-
-
     }
 
     public void BackButton(GameObject currentRoom)
@@ -138,8 +146,6 @@ public class NetManager : MonoBehaviourPunCallbacks
         currentRoom.SetActive(false);
         hostRoomButtonActivate.gameObject.SetActive(true);
         joinRoomButtonActivate.gameObject.SetActive(true);
-
-
     }
 
     

@@ -22,7 +22,6 @@ public class PhotonChat : MonoBehaviour, IChatClientListener
             PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion, 
             new AuthenticationValues(PhotonNetwork.NickName));
     }
-
     private void Update()
     {
         _chatClient.Service();
@@ -80,17 +79,19 @@ public class PhotonChat : MonoBehaviour, IChatClientListener
     {
         for(int i = 0; i <senders.Length; i++)
         {
-            var currSender = senders[i];
+            var currSender = senders[i];          
             string color;
+          
             if (PhotonNetwork.NickName == currSender)
             {
-                color = "<color=blue>";
-            }
+                color = "<color=blue>";        
+            }         
             else
             {
-                color = "<color=red>";
+                color = "<color=red>";                   
             }
-            content.text += color + currSender + ": " + "</color>" + messages[i] + "\n";
+          
+            content.text += color + currSender + ": " + "</color>" + messages[i] + "\n";         
         }   
     }
 
