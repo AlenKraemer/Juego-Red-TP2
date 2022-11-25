@@ -6,7 +6,7 @@ using Photon.Pun;
 public class BallController : MonoBehaviourPun
 {
     [SerializeField] private float speed = 5f;
-    private Vector2[] initialLaunch = { new Vector2(0, 1), new Vector2(0, -1), new Vector2(1, 0), new Vector2(-1, 0) };
+    private Vector2[] initialLaunch = { new Vector2(0, 1), new Vector2(0, -1), new Vector2(1, 0), new Vector2(-1, 0), new Vector2(1, 1), new Vector2(-1, 1), new Vector2(1, -1), new Vector2(-1, -1) };
     private Rigidbody2D rb;
 
     private void Awake()
@@ -22,7 +22,7 @@ public class BallController : MonoBehaviourPun
 
     private void Launch()
     {
-        int index = Random.Range(0, 4);
+        int index = Random.Range(0, 8);
         rb.velocity = initialLaunch[index] * speed;
     }
 

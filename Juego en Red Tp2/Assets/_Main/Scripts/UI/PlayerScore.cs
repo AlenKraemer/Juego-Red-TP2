@@ -9,6 +9,7 @@ using System;
 public class PlayerScore : MonoBehaviourPun
 {
     [SerializeField] private int playerID;
+    [SerializeField] private GameObject victoryScreen;
     [SerializeField] private TextMeshProUGUI playerScoreText;
     [SerializeField] private int score = 20;
 
@@ -27,6 +28,11 @@ public class PlayerScore : MonoBehaviourPun
     public void RPC_DeleteScore()
     {
         photonView.RPC(nameof(DeleteScore),RpcTarget.All);
+    }
+
+    public void RPC_Victory()
+    {
+        photonView.RPC(nameof(Victory), RpcTarget.All);
     }
 
     [PunRPC]
@@ -55,5 +61,11 @@ public class PlayerScore : MonoBehaviourPun
     public void SetInitialScore()
     {
         playerScoreText.text = score.ToString();
+    }
+
+    [PunRPC]
+    public void Victory()
+    {
+        victoryScreen.SetActive(true);
     }
 }
